@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HITSIX – Innings of Dreams</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Share+Tech+Mono&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style2.css">
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="brand">
+   <img src="logo.png" alt="" style="width: 150px; height: 50px;">
+  </div>
+  <nav class="links">
+    <a id="homeLink">Home</a>
+    <a id="freeRegLink">Free Registration</a>
+      <a id="sponsorLink" style="color: rgb(168, 5, 5); ">Become a Sponsor</a>
+
+  </nav>
+</header>
+
+<div id="mainContent">
+
+<section class="hero">
+  <div class="boundary"></div>
+  <div class="boundary inner"></div>
+  <div class="eyebrow">Pune's Turf League</div>
+  <h1>INNINGS OF<br><span>DREAMS</span></h1>
+  <p class="tag">Book your slot, build your team, and chase the perfect six under the lights. HITSIX is where weekend cricketers become legends.</p>
+  <div class="hero-ctas">
+    <button class="btn btn-primary" onclick="document.getElementById('formSection').scrollIntoView({behavior:'smooth'})">Register Now</button>
+    <button class="btn btn-ghost" onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'})">See Events</button>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span><b>500+</b> Players Onboard</span>
+    <span><b>42</b> Matches Played</span>
+    <span><b>128</b> Sixes Hit This Season</span>
+    <span>Next Up: <b>Battle of Battles — 15 Sept</b></span>
+    <span><b>500+</b> Players Onboard</span>
+    <span><b>42</b> Matches Played</span>
+    <span><b>128</b> Sixes Hit This Season</span>
+    <span>Next Up: <b>Battle of Battles — 15 Sept</b></span>
+  </div>
+</div>
+
+<section id="aboutSection">
+  <div class="section-head">
+    <div class="kicker">Who we are</div>
+    <h2>About <span>HITSIX</span></h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-card">
+      <p>Welcome to <b>HITSIX</b>, Pune's ultimate cricketing experience! Join tournaments, form teams, showcase your skills, and compete with the best. Book your slot, live the cricketing dream, and be part of the action.</p>
+      <div class="stat-row">
+        <div class="stat"><b>3</b><span>Live Events</span></div>
+        <div class="stat"><b>₹200</b><span>Entry Fee</span></div>
+        <div class="stat"><b>12+</b><span>Min. Age</span></div>
+      </div>
+    </div>
+    <div class="icon-showcase">
+      <img src="https://images.pexels.com/photos/11204757/pexels-photo-11204757.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Cricketer celebrating with bat raised after a winning shot">
+    </div>
+  </div>
+</section>
+
+<div class="seam">
+  <svg viewBox="0 0 1000 20" preserveAspectRatio="none"><path d="M0 10 Q25 0 50 10 T100 10 T150 10 T200 10 T250 10 T300 10 T350 10 T400 10 T450 10 T500 10 T550 10 T600 10 T650 10 T700 10 T750 10 T800 10 T850 10 T900 10 T950 10 T1000 10" stroke="#f2b705" stroke-width="2" fill="none"/></svg>
+</div>
+
+<section id="events">
+  <div class="section-head">
+    <div class="kicker">Don't miss out</div>
+    <h2>Upcoming <span>Events</span></h2>
+  </div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-media"><img src="https://images.pexels.com/photos/21415108/pexels-photo-21415108.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cricketer with helmet and bat ready to play"></div>
+      <div class="card-body">
+        <h3>Battle of Battles</h3>
+        <p>Date: 15th Sept 2025</p>
+        <p>Status: <span class="status open">Open Now (Paid Event)</span></p>
+        <div class="slots">SLOTS: 8 LEFT</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><img src="https://images.pexels.com/photos/10469894/pexels-photo-10469894.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Two cricket players in action on a green field"></div>
+      <div class="card-body">
+        <h3>Pune Weekend Cup</h3>
+        <p>Date: 25th Sept 2025</p>
+        <p>Status: <span class="status upcoming">Upcoming</span></p>
+        <div class="slots fire">UPCOMING</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><img src="https://images.pexels.com/photos/31096662/pexels-photo-31096662.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cricketer practicing batting technique at sunset"></div>
+      <div class="card-body">
+        <h3>HITSIX Night League</h3>
+        <p>Date: 30th Sept 2025</p>
+        <p>Status: <span class="status upcoming">Upcoming</span></p>
+        <div class="slots fire">UPCOMING</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="formSection">
+  <div class="section-head">
+    <div class="kicker">Lock your spot</div>
+    <h2>Event <span>Registration</span></h2>
+  </div>
+  <div class="form-wrap">
+  <label>Select Event</label>
+  <select id="eventSelect" required>
+    <option value="">Select Event</option>
+    <option value="battle_of_battles">Battle of Battles (Paid)</option>
+    <option value="pune_weekend_cup" disabled>Pune Weekend Cup (Upcoming)</option>
+    <option value="hitsix_night_league" disabled>HITSIX Night League (Upcoming)</option>
+  </select>
+
+  <div id="regModeToggle" class="hidden mode-toggle">
+    <button type="button" id="individualModeBtn" class="mode-btn active">Individual Registration</button>
+    <button type="button" id="teamModeBtn" class="mode-btn">Team Registration (Max 5)</button>
+  </div>
+
+  <!-- ===== INDIVIDUAL REGISTRATION ===== -->
+  <form id="regForm" class="hidden">
+  <label>Full Name</label>
+  <input type="text" required>
+
+  <label>Mobile Number</label>
+  <input type="tel" required>
+
+  <label>Alternate Number</label>
+  <input type="tel">
+
+  <label>Age</label>
+  <input type="number" min="12" required>
+
+  <label>Location / City</label>
+  <input type="text" required>
+
+  <label>Profession</label>
+  <input type="text">
+
+  <label>Food Preference</label>
+  <select>
+    <option>Veg</option>
+    <option>Non-Veg</option>
+  </select>
+
+  <label>Experience (in cricket)</label>
+  <select required>
+    <option value="">Select Experience</option>
+    <option value="beginner">Beginner (0-1 year)</option>
+    <option value="intermediate">Intermediate (1-3 years)</option>
+    <option value="advanced">Advanced (3-5 years)</option>
+    <option value="semi_pro">Semi-Pro (5-7 years)</option>
+    <option value="professional">Professional (7+ years)</option>
+  </select>
+
+  <label>Are you applying for Captain?</label>
+  <select id="captainSelect">
+    <option value="">Select</option>
+    <option value="yes">Yes</option>
+    <option value="no">No</option>
+  </select>
+
+  <div id="captainQuestionsIndividual" class="hidden captain-box">
+  <label>1. Do you have leadership experience?</label>
+  <select>
+  <option value="">Select</option>
+  <option>Yes</option>
+  <option>No</option>
+  </select>
+
+  <label>If Yes, why do you want to be Captain?</label>
+  <select>
+    <option value="">Select Reason</option>
+    <option value="lead_team_by_example">Lead the team by own performance</option>
+    <option value="strategy_planning">Focus on strategy and planning</option>
+    <option value="motivate_teammates">Motivate & inspire teammates</option>
+    <option value="challenge_self">Challenge myself and grow</option>
+    <option value="team_success_priority">Prioritize team success over personal goals</option>
+  </select>
+
+  <label>2. Batting or Bowling Preference?</label>
+  <select>
+  <option>Batting</option>
+  <option>Bowling</option>
+  <option>All-rounder</option>
+  </select>
+
+  <label>3. As a Captain, how will you handle your team?</label>
+  <select>
+  <option>Lead by own performance</option>
+  <option>Support & motivate teammates</option>
+  <option>Strategy & manage from front</option>
+  </select>
+
+  <label>4. Tell us your view on cricket and how you'd manage your team</label>
+  <textarea rows="5" placeholder="Share your thoughts on the game and your approach to leading the team..."></textarea>
+  </div>
+
+  <label>Upload Aadhaar (PDF/JPEG/PNG)</label>
+  <input type="file" accept=".pdf,.jpg,.jpeg,.png" required>
+
+  <label>
+  <input type="checkbox" id="termsCheck" required style="width:auto;display:inline-block;margin-right:.5rem;"> I have read and agree to the <a href="#" id="termsLink">Terms & Conditions</a>
+  </label>
+
+  <button type="submit" id="payBtn" class="btn btn-gold">Pay & Register (₹200)</button>
+  </form>
+
+  <!-- ===== TEAM REGISTRATION ===== -->
+  <form id="teamRegForm" class="hidden">
+  <label>Squad / Team Name</label>
+  <input type="text" required placeholder="e.g. Thunder Strikers, Team Alpha , Team Sikandar">
+  <p class="hint" style="margin-top: 5px;">Wanna play as a team? Bring your squad. We’ll handle the rest. 🔥</p>
+
+  <label>Location / City</label>
+  <input type="text" required>
+
+  <div id="teamPlayersContainer" style="margin-top: 10px;">
+    <div class="player-block" data-player="1">
+      <div class="player-block-head" >
+        <span class="player-num">Player 1</span>
+      </div>
+      <label>Full Name</label>
+      <input type="text" required>
+      <label>Mobile Number</label>
+      <input type="tel" required>
+      <label>Age</label>
+      <input type="number" min="12" required>
+      <label>Experience (in cricket)</label>
+      <select required>
+        <option value="">Select Experience</option>
+        <option value="beginner">Beginner (0-1 year)</option>
+        <option value="intermediate">Intermediate (1-3 years)</option>
+        <option value="advanced">Advanced (3-5 years)</option>
+        <option value="semi_pro">Semi-Pro (5-7 years)</option>
+        <option value="professional">Professional (7+ years)</option>
+      </select>
+      <label>Food Preference</label>
+      <select>
+        <option>Veg</option>
+        <option>Non-Veg</option>
+      </select>
+      <label>Upload Aadhaar (PDF/JPEG/PNG)</label>
+      <input type="file" accept=".pdf,.jpg,.jpeg,.png" required>
+    </div>
+  </div>
+
+  <button type="button" id="addTeamPlayerBtn" class="btn btn-ghost" style="width:100%;margin-top:.6rem;">+ Add Player <span id="teamPlayerCountLabel">(1/5)</span></button>
+
+  <label style="margin-top:1.6rem;">Team Captain</label>
+  <select id="teamCaptainSelect">
+    <option value="1">Player 1</option>
+  </select>
+
+  <div class="captain-box">
+  <label>1. Do you have leadership experience?</label>
+  <select>
+  <option value="">Select</option>
+  <option>Yes</option>
+  <option>No</option>
+  </select>
+
+  <label>2. Batting or Bowling Preference?</label>
+  <select>
+  <option>Batting</option>
+  <option>Bowling</option>
+  <option>All-rounder</option>
+  </select>
+
+  <label>3. As a Captain, how will you handle your team?</label>
+  <select>
+  <option>Lead by own performance</option>
+  <option>Support & motivate teammates</option>
+  <option>Strategy & manage from front</option>
+  </select>
+
+  <label>4. Tell us your view on cricket and how you'd manage your team</label>
+  <textarea rows="5" placeholder="Share your thoughts on the game and your approach to leading the team..."></textarea>
+  </div>
+
+  <label>
+  <input type="checkbox" id="teamTermsCheck" required style="width:auto;display:inline-block;margin-right:.5rem;"> I have read and agree to the <a href="#" id="teamTermsLink">Terms & Conditions</a>
+  </label>
+
+  <button type="submit" id="teamPayBtn" class="btn btn-gold">Pay & Register Team (₹200)</button>
+  </form>
+  </div>
+</section>
+
+
+<section style="position:relative;">
+  <div style="position:absolute;inset:0;margin:0 -2rem;background:linear-gradient(180deg, transparent, rgba(7,10,8,0.75) 40%, var(--ink) 90%), url('https://images.pexels.com/photos/13509965/pexels-photo-13509965.jpeg?auto=compress&cs=tinysrgb&w=1400') center/cover no-repeat; opacity:.35; border-radius:var(--radius); z-index:0;"></div>
+  <div style="position:relative;z-index:1;">
+  <div class="section-head">
+    <div class="kicker">Player of the match speaks</div>
+    <h2>Player <span>Reviews</span></h2>
+  </div>
+  <div class="grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Amazing tournament! Well organized and fun."</p>
+      <div class="who">— Ashif</div>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Loved playing here. Best cricketing vibe in Pune!"</p>
+      <div class="who">— Samish</div>
+    </div>
+     <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Amazing Facilities. Best cricketing vibe in Pune!"</p>
+      <div class="who">— Prince</div>
+    </div>
+     <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Abroble & Tasty Meal. Thanku so much Hit Six !"</p>
+      <div class="who">— Anushsm</div>
+    </div>
+        <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>Supportive Staff.Best cricketing vibe in Pune !"</p>
+      <div class="who">— Sarthak</div>
+    </div>
+        <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>Delicious & Tasty Meal. Maja aa gya  !"</p>
+      <div class="who">— Anmol</div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+</section>
+</div>
+
+<section id="freeReg" class="hidden">
+  <div style="border-radius:var(--radius);overflow:hidden;margin-bottom:2rem;height:200px;position:relative;">
+    <img src="https://images.pexels.com/photos/13509632/pexels-photo-13509632.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Young cricketer preparing to bat during a match" style="width:100%;height:100%;object-fit:cover;">
+    <div style="position:absolute;inset:0;background:linear-gradient(180deg, transparent, rgba(7,10,8,0.85));"></div>
+  </div>
+  <div class="section-head">
+    <div class="kicker">Stay in the loop</div>
+    <h2>Free <span>Registration</span></h2>
+  </div>
+  <p>For players who want to register without participating in a tournament yet. Stay updated, and join future events!</p>
+  <div class="form-wrap">
+  <form id="freeForm">
+  <label>Full Name</label>
+  <input type="text" required>
+  <label>Mobile Number</label>
+  <input type="tel" required>
+  <label>Alternate Number</label>
+  <input type="tel">
+  <label>Email</label>
+  <input type="email" required>
+  <label>
+  <input type="checkbox" id="freeTerms" required style="width:auto;display:inline-block;margin-right:.5rem;"> I agree to receive updates and notifications
+  </label>
+  <button type="submit" class="btn btn-gold" style="width:100%;margin-top:1.2rem;">Register for Free</button>
+  </form>
+  </div>
+</section>
+<section id="sponsorReg" class="hidden">
+
+  <div class="section-head">
+    <div class="kicker">Partner with us</div>
+    <h2>Become a <span>Sponsor</span></h2>
+  </div>
+  <p>Get your brand in front of 500+ passionate cricketers. Sponsor a match, a jersey, or the entire league — your name, your visibility.</p>
+
+  <div class="form-wrap">
+  <form id="sponsorForm">
+
+    <label>Company / Brand Name</label>
+    <input type="text" required placeholder="e.g. XYZ Sports Pvt Ltd">
+
+    <label>Contact Person Name</label>
+    <input type="text" required>
+
+    <label>Mobile Number</label>
+    <input type="tel" required>
+
+    <label>Alternate Number</label>
+    <input type="tel">
+
+    <label>Email</label>
+    <input type="email" required>
+
+    <label>Company Address</label>
+    <textarea rows="3" required placeholder="Full address with city & pincode"></textarea>
+
+    <label>Sponsorship Type</label>
+    <select id="sponsorType" required>
+      <option value="">Select Sponsorship Type</option>
+      <option value="title_sponsor">Title Sponsor (Full Event)</option>
+      <option value="match_sponsor">Match Sponsor (Single Match)</option>
+      <option value="jersey_sponsor">Jersey / Kit Sponsor</option>
+      <option value="food_sponsor">Food & Refreshment Sponsor</option>
+      <option value="banner_sponsor">Banner / Turf Branding</option>
+      <option value="other">Other</option>
+    </select>
+
+    <label>Sponsorship Package</label>
+    <select id="sponsorPackage" required>
+      <option value="">Select Package</option>
+      <option value="silver">Silver — ₹5,000 (Logo on Banners + Social Mention)</option>
+      <option value="gold">Gold — ₹15,000 (+ Jersey Branding + Turf Announcement)</option>
+      <option value="platinum">Platinum — ₹30,000 (Title Sponsor + Full Branding + Video Coverage)</option>
+      <option value="custom">Custom Package (We'll contact you)</option>
+    </select>
+<label>Sponsorship Package</label>
+<select id="sponsorPackage" required>
+  <option value="">Select Package</option>
+  <option value="5000">Silver — ₹5,000 (Logo on Banners + Social Mention)</option>
+  <option value="15000">Gold — ₹15,000 (+ Jersey Branding + Turf Announcement)</option>
+  <option value="30000">Platinum — ₹30,000 (Title Sponsor + Full Branding + Video Coverage)</option>
+  <option value="custom">Custom Package (We'll contact you)</option>
+</select>
+
+<label>Upload Company Logo (PNG/JPEG)</label>
+<input type="file" accept=".png,.jpg,.jpeg">
+
+<label>Message / Requirements (optional)</label>
+<textarea rows="3" placeholder="Any specific requirements or branding ideas..."></textarea>
+
+<label>
+  <input type="checkbox" id="sponsorTerms" required style="width:auto;display:inline-block;margin-right:.5rem;">
+  I agree to be contacted by the HITSIX team regarding sponsorship details
+</label>
+
+<button type="submit" id="sponsorSubmitBtn" class="btn btn-gold" style="width:100%;margin-top:1.2rem;">Submit Sponsorship Request</button>
+    
+  </form>
+  </div>
+</section>
+<footer>
+  <p style="color:var(--cream);font-weight:600;">Follow the action</p>
+  <div class="social-row">
+    <a href="#" title="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.3.06 2.2.27 2.7.45.6.24 1 .53 1.5 1.03.5.5.8.9 1 1.5.2.5.4 1.4.4 2.7.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.3-.2 2.2-.4 2.7-.2.6-.5 1-1 1.5-.5.5-.9.8-1.5 1-.5.2-1.4.4-2.7.4-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.3 0-2.2-.2-2.7-.4-.6-.2-1-.5-1.5-1-.5-.5-.8-.9-1-1.5-.2-.5-.4-1.4-.4-2.7-.1-1.3-.1-1.7-.1-4.9s0-3.6.1-4.9c0-1.3.2-2.2.4-2.7.2-.6.5-1 1-1.5.5-.5.9-.8 1.5-1 .5-.2 1.4-.4 2.7-.4C8.4 2.2 8.8 2.2 12 2.2m0-2.2C8.7 0 8.3 0 7 .1 5.6.1 4.6.3 3.8.6c-.9.3-1.6.8-2.3 1.5C.8 2.8.3 3.5 0 4.4c-.3.8-.5 1.8-.6 3.2C-.1 8.9-.1 9.3-.1 12.6s0 3.7.1 5c.1 1.4.3 2.4.6 3.2.3.9.8 1.6 1.5 2.3.7.7 1.4 1.2 2.3 1.5.8.3 1.8.5 3.2.6 1.3.1 1.7.1 5 .1s3.7 0 5-.1c1.4-.1 2.4-.3 3.2-.6.9-.3 1.6-.8 2.3-1.5.7-.7 1.2-1.4 1.5-2.3.3-.8.5-1.8.6-3.2.1-1.3.1-1.7.1-5s0-3.7-.1-5c-.1-1.4-.3-2.4-.6-3.2-.3-.9-.8-1.6-1.5-2.3C21.2.8 20.5.3 19.6 0c-.8-.3-1.8-.5-3.2-.6C15.1 0 14.7 0 12 0z"/><path d="M12 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8 4 4 0 010 8z"/><circle cx="18.4" cy="5.6" r="1.4"/></svg></a>
+    <a href="#" title="Facebook"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 10-11.6 9.9v-7H7.9V12h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.2.2 2.2.2v2.4h-1.2c-1.2 0-1.6.8-1.6 1.6V12h2.8l-.4 2.9h-2.4v7A10 10 0 0022 12z"/></svg></a>
+    <a href="#" title="Twitter"><svg viewBox="0 0 24 24"><path d="M23 4.9c-.8.4-1.7.6-2.6.8a4.5 4.5 0 001.98-2.5c-.9.5-1.9.9-2.95 1.1A4.5 4.5 0 0012 8v1a12.8 12.8 0 01-9.3-4.7 4.5 4.5 0 001.4 6 4.5 4.5 0 01-2-.6v.1a4.5 4.5 0 003.6 4.4 4.5 4.5 0 01-2 .1 4.5 4.5 0 004.2 3.1A9 9 0 012 19.5 12.7 12.7 0 008.9 21.5c8.3 0 12.8-6.9 12.8-12.8v-.6c.9-.6 1.6-1.4 2.3-2.2z"/></svg></a>
+  </div>
+  <p>&copy; 2025 HITSIX. All rights reserved.</p>
+</footer>
+
+<!-- Terms Modal -->
+<div id="termsModal" class="modal">
+<div class="modal-content">
+<span class="close">&times;</span>
+<h2>Turf Tournament – Terms & Conditions</h2>
+<div style="max-height:400px; overflow-y:auto; padding-right:10px;">
+<ol>
+<li><b>Registration & Payment</b>
+<ul>
+<li>Team allocation will be done only after registration and payment confirmation.</li>
+<li>Payment is non-refundable except in case of event cancellation.</li>
+</ul>
+</li>
+<li><b>Eligibility</b>
+<ul>
+<li>Minimum age of the player should be <b>12 years</b>.</li>
+<li>Every player is responsible for their own physical fitness and health.</li>
+</ul>
+</li>
+<li><b>Match Rules & Conduct</b>
+<ul>
+<li>Match schedule and timings will be decided by the organizer.</li>
+<li>Players must play with fairness, discipline, and respect.</li>
+<li>Abusive language, fighting, or cheating is strictly prohibited.</li>
+</ul>
+</li>
+<li><b>Captain Selection</b>
+<ul>
+<li>Captain selection will be at the discretion of the organizer based on the submitted form & leadership skills.</li>
+<li>Organizer's decision will be final.</li>
+</ul>
+</li>
+<li><b>Safety & Liability</b>
+<ul>
+<li>Organizer will not be responsible for any personal injury, loss, or damage during the turf event.</li>
+<li>Players must bring their own safety gear (helmet, pads, gloves, shoes).</li>
+</ul>
+</li>
+<li><b>Photography & Social Media</b>
+<ul>
+<li>Photos/videos will be taken during the event and may be posted on Instagram/social media.</li>
+<li>By accepting T&C, players consent to this.</li>
+</ul>
+</li>
+<li><b>Acceptance</b>
+<ul>
+<li>By submitting the form, players agree to all the <b>Terms & Conditions</b>.</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
