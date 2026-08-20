@@ -339,7 +339,7 @@
         <div class="review-card">
       <div class="stars">★★★★★</div>
       <p>Delicious & Tasty Meal. Maja aa gya  !"</p>
-      <div class="who">— Prince Ray</div>
+      <div class="who">— Prince Ray </div>
     </div>
   </div>
   </div>
@@ -451,10 +451,13 @@
 <textarea rows="3" placeholder="Any specific requirements or branding ideas..."></textarea>
 
 <label>
-  <input type="checkbox" id="sponsorTerms" required style="width:auto;display:inline-block;margin-right:.5rem;">
-  I agree to be contacted by the HITSIX team regarding sponsorship details
+ <label style="display:flex; align-items:center; gap:.5rem;">
+    <input type="checkbox" id="termsCheck" required style="width:auto; margin:0;">
+    <span>
+        I agree to be contacted by the HITSIX team regarding sponsorship details.
+        <a href="#" id="termsLink">Terms & Conditions</a>
+    </span>
 </label>
-
 <button type="submit" id="sponsorSubmitBtn" class="btn btn-gold" style="width:100%;margin-top:1.2rem;">Submit Sponsorship Request</button>
     
   </form>
