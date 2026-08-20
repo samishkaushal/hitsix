@@ -368,3 +368,142 @@ footer p{color:rgba(244,241,230,0.5);font-size:.85rem;}
 #sponsorPackage option {
   padding: 8px;
 }
+.school {
+    position: fixed;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-right: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    z-index: 9999;
+}
+.school a {
+    height: 220px;
+    width: 30px;
+
+    background: brown;
+    color: white;
+
+    font-weight: bold;
+    border: 3px solid brown;
+
+    writing-mode: vertical-lr;
+
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+
+    padding: 5px;
+    margin: 15px 0;
+
+    text-align: center;
+    font-size: larger;
+
+    cursor: pointer;
+
+    position: relative;
+    z-index: 1;
+
+    box-shadow:
+        0 0 8px #ff4500,
+        0 0 18px #ff6600,
+        0 0 30px #ff9900;
+}
+.school a {
+    height: 220px;
+    width: 35px;
+
+    background: linear-gradient(
+        0deg,
+        /* #ffcc00, */
+        #ff6600,
+        #ff3300,
+        #990000
+    );
+
+    color: white;
+    font-weight: bold;
+
+    border: 3px solid #ff4500;
+
+    writing-mode: vertical-lr;
+
+    border-radius: 5px;
+
+    padding: 5px;
+    margin: 0;
+
+    text-align: center;
+    font-size: larger;
+
+    cursor: pointer;
+
+    position: relative;
+    z-index: 1;
+
+    box-shadow:
+        0 0 8px #ff4500,
+        0 0 18px #ff6600,
+        0 0 30px #ff9900;
+}
+
+/* Flame glow behind button */
+.school a::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -15px;
+    left: -12px;
+    width: 54px;
+    height: 250px;
+
+ 
+
+    filter: blur(8px);
+    opacity: 0.9;
+    animation: fireGlow 0.5s infinite alternate;
+}
+
+/* Fire flickering */
+@keyframes fireGlow {
+    0% {
+        transform: scaleY(0.95) scaleX(0.9);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: scaleY(1.05) scaleX(1.05);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scaleY(0.9) scaleX(0.95);
+        opacity: 0.8;
+    }
+}
+.school a::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: -35px;
+    left: 2px;
+    font-size: 35px;
+    writing-mode: horizontal-tb;
+    animation: flame 0.4s infinite alternate;
+}
+
+@keyframes flame {
+    from {
+        transform: scale(0.9) rotate(-5deg);
+    }
+
+    to {
+        transform: scale(1.15) rotate(5deg);
+    }
+}

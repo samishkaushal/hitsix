@@ -198,19 +198,35 @@ freeForm.addEventListener("submit",function(e){
 // ===== Sponsor Registration toggle =====
 const sponsorLink=document.getElementById("sponsorLink");
 const sponsorSection=document.getElementById("sponsorReg");
+const sponsorBox = document.querySelector(".school");
 
-sponsorLink.addEventListener("click",function(){
-  mainContent.style.display="none";
-  freeRegSection.classList.add("hidden");
-  sponsorSection.classList.remove("hidden");
-  sponsorSection.scrollIntoView({behavior:"smooth"});
+
+sponsorLink.addEventListener("click", function(){
+    mainContent.style.display = "none";
+    freeRegSection.classList.add("hidden");
+
+    // Become a Sponsor button hide
+    sponsorBox.style.display = "none";
+
+    sponsorSection.classList.remove("hidden");
+    sponsorSection.scrollIntoView({behavior:"smooth"});
 });
 
 // Update Home click to also hide sponsor section
-homeLink.addEventListener("click",function(){
-  sponsorSection.classList.add("hidden");
-});
 
+homeLink.addEventListener("click", function(){
+    sponsorSection.classList.add("hidden");
+    freeRegSection.classList.add("hidden");
+    mainContent.style.display = "block";
+
+    // Become a Sponsor button wapas show
+    sponsorBox.style.display = "flex";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+});
 // Dynamic price update on submit button based on package selected
 const sponsorPackage=document.getElementById("sponsorPackage");
 const sponsorSubmitBtn=document.getElementById("sponsorSubmitBtn");
