@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HITSIX Admin Dashboard</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #080808;
+      color: #fff;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+      width: 230px;
+      background: #111;
+      border-right: 1px solid #222;
+      padding: 25px 15px;
+      position: fixed;
+      height: 100vh;
+      left: 0;
+      top: 0;
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 28px;
+      font-weight: 900;
+      color: #ff2b2b;
+      margin-bottom: 35px;
+    }
+
+    .nav-btn {
+      width: 100%;
+      padding: 13px 15px;
+      margin-bottom: 10px;
+      border: none;
+      background: transparent;
+      color: #aaa;
+      text-align: left;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 15px;
+    }
+
+    .nav-btn:hover,
+    .nav-btn.active {
+      background: #d62828;
+      color: #fff;
+    }
+
+    /* MAIN */
+    .main {
+      margin-left: 230px;
+      width: calc(100% - 230px);
+      padding: 30px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .topbar h1 {
+      font-size: 30px;
+    }
+
+    .refresh-btn {
+      background: #d62828;
+      color: #fff;
+      border: none;
+      padding: 11px 18px;
+      border-radius: 7px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .refresh-btn:hover {
+      background: #ff3333;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #1a1a1a, #100000);
+      border: 1px solid #292929;
+      padding: 25px;
+      border-radius: 14px;
+      margin-bottom: 25px;
+    }
+
+    .hero h2 {
+      font-size: 27px;
+      margin-bottom: 8px;
+    }
+
+    .hero p {
+      color: #aaa;
+    }
+
+    /* STATS */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .stat-card {
+      background: #111;
+      border: 1px solid #242424;
+      border-radius: 12px;
+      padding: 20px;
+    }
+
+    .stat-card h3 {
+      color: #999;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .stat-card .number {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    /* CONTROLS */
+    .controls {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .search {
+      flex: 1;
+      min-width: 220px;
+      background: #111;
+      color: #fff;
+      border: 1px solid #333;
+      padding: 12px 15px;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    .filter-btn {
+      background: #111;
+      color: #aaa;
+      border: 1px solid #333;
+      padding: 11px 17px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #d62828;
+      color: #fff;
+      border-color: #d62828;
+    }
+
+    /* TABLE */
+    .table-box {
+      background: #111;
+      border: 1px solid #242424;
+      border-radius: 12px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 850px;
+    }
+
+    th,
+    td {
+      padding: 15px;
+      border-bottom: 1px solid #242424;
+      text-align: left;
+    }
+
+    th {
+      color: #888;
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+
+    td {
+      font-size: 14px;
+    }
+
+    tr:hover {
+      background: #161616;
+    }
+
+    .type-badge {
+      display: inline-block;
+      padding: 5px 9px;
+      border-radius: 20px;
+      background: #242424;
+      font-size: 12px;
+    }
+
+    .amount {
+      color: #fff;
+      font-weight: bold;
+    }
+
+    /* STATUS */
+    .status {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .status.paid {
+      background: #123d1c;
+      color: #4cff70;
+    }
+
+    .status.failed {
+      background: #4a1010;
+      color: #ff5656;
+    }
+
+    .status.pending {
+      background: #3d3510;
+      color: #ffd84d;
+    }
+
+    .status.free {
+      background: #102c3d;
+      color: #55c9ff;
+    }
+
+    .status.new {
+      background: #252525;
+      color: #fff;
+    }
+
+    .view-btn {
+      background: #222;
+      border: 1px solid #444;
+      color: #fff;
+      padding: 7px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .view-btn:hover {
+      background: #d62828;
+      border-color: #d62828;
+    }
+
+    /* LOADING */
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: #888;
+    }
+
+    /* MODAL */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 1000;
+      padding: 30px;
+      overflow-y: auto;
+    }
+
+    .modal.show {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 850px;
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 15px;
+      margin-top: 30px;
+      padding: 25px;
+      position: relative;
+    }
+
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 15px;
+      font-size: 28px;
+      color: #aaa;
+      cursor: pointer;
+    }
+
+    .close:hover {
+      color: #fff;
+    }
+
+    .modal-title {
+      font-size: 25px;
+      margin-bottom: 20px;
+      color: #ff4545;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .detail {
+      background: #181818;
+      border: 1px solid #262626;
+      padding: 14px;
+      border-radius: 8px;
+    }
+
+    .detail label {
+      display: block;
+      color: #777;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .detail span {
+      color: #fff;
+      word-break: break-word;
+    }
+
+    .section-title {
+      margin: 25px 0 12px;
+      color: #ff4545;
+      font-size: 18px;
+    }
+
+    .player-card {
+      background: #181818;
+      border: 1px solid #292929;
+      padding: 15px;
+      border-radius: 9px;
+      margin-bottom: 10px;
+    }
+
+    .player-card h4 {
+      margin-bottom: 10px;
+    }
+
+    .player-info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      color: #bbb;
+      font-size: 13px;
+    }
+
+    /* ERROR */
+    .error {
+      text-align: center;
+      padding: 30px;
+      color: #ff5555;
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      .sidebar {
+        width: 190px;
+      }
+
+      .main {
+        margin-left: 190px;
+        width: calc(100% - 190px);
+        padding: 20px;
+      }
+
+      .stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid #222;
+      }
+
+      .container {
+        display: block;
+      }
+
+      .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 15px;
+      }
+
+      .topbar {
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .stats {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .details-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .player-info {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="logo">HITSIX</div>
+
+    <button class="nav-btn active" onclick="setFilter('all', this)">
+      📊 Dashboard
+    </button>
+
+    <button class="nav-btn" onclick="setFilter('all', this)">
+      📋 All Data
+    </button>
+
+    <button class="nav-btn" onclick="setFilter('paid', this)">
+      ✅ Paid
+    </button>
+
+    <button class="nav-btn" onclick="setFilter('free', this)">
+      🆓 Free
+    </button>
+
+    <button class="nav-btn" onclick="setFilter('sponsor', this)">
+      🤝 Sponsors
+    </button>
+
+    <button class="nav-btn" onclick="setFilter('pending', this)">
+      ⏳ Pending
+    </button>
+
+    <button class="nav-btn" onclick="setFilter('failed', this)">
+      ❌ Failed
+    </button>
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="topbar">
+      <h1>Admin Dashboard</h1>
+
+      <button class="refresh-btn" onclick="loadData()">
+        🔄 Refresh
+      </button>
+    </div>
+
+
+    <!-- HERO -->
+    <div class="hero">
+      <h2>🏏 HITSIX — Innings of Dreams</h2>
+      <p>
+        Registration & Payment Management Dashboard
+      </p>
+    </div>
+
+
+    <!-- STATS -->
+    <div class="stats">
+
+      <div class="stat-card">
+        <h3>Total Registrations</h3>
+        <div class="number" id="totalCount">0</div>
+      </div>
+
+      <div class="stat-card">
+        <h3>Paid Registrations</h3>
+        <div class="number" id="paidCount">0</div>
+      </div>
+
+      <div class="stat-card">
+        <h3>Pending</h3>
+        <div class="number" id="pendingCount">0</div>
+      </div>
+
+      <div class="stat-card">
+        <h3>Paid Amount</h3>
+        <div class="number" id="paidAmount">₹0</div>
+      </div>
+
+    </div>
+
+
+    <!-- CONTROLS -->
+    <div class="controls">
+
+      <input
+        type="text"
+        id="searchInput"
+        class="search"
+        placeholder="Search name, email, phone, team..."
+        oninput="renderTable()"
+      />
+
+      <button
+        class="filter-btn active"
+        onclick="changeFilter('all', this)"
+      >
+        All
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="changeFilter('individual', this)"
+      >
+        Individual
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="changeFilter('team', this)"
+      >
+        Team
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="changeFilter('free', this)"
+      >
+        Free
+      </button>
+
+      <button
+        class="filter-btn"
+        onclick="changeFilter('sponsor', this)"
+      >
+        Sponsor
+      </button>
+
+    </div>
+
+
+    <!-- TABLE -->
+    <div class="table-box">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Name / Team</th>
+            <th>Type</th>
+            <th>Mobile</th>
+            <th>Email</th>
+            <th>Amount</th>
+            <th>Payment Status</th>
+            <th>Date</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody id="dataTable">
+
+          <tr>
+            <td colspan="8" class="loading">
+              Loading data...
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<!-- MODAL -->
+<div class="modal" id="detailsModal">
+
+  <div class="modal-box">
+
+    <span class="close" onclick="closeModal()">×</span>
+
+    <h2 class="modal-title">Registration Details</h2>
+
+    <div id="modalContent"></div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const API_URL =
+  "https://puneturfcricket.onrender.com/api/registrations";
+
+
+let allData = [];
+let currentFilter = "all";
+
+
+/* =========================
+   LOAD DATA
+========================= */
+
+async function loadData() {
+
+  const table = document.getElementById("dataTable");
+
+  table.innerHTML = `
+    <tr>
+      <td colspan="8" class="loading">
+        Loading data...
+      </td>
+    </tr>
+  `;
+
+  try {
+
+    const response = await fetch(API_URL);
+
+    if (!response.ok) {
+      throw new Error("API request failed");
+    }
+
+    const result = await response.json();
+
+    if (Array.isArray(result)) {
+      allData = result;
+    } else if (Array.isArray(result.data)) {
+      allData = result.data;
+    } else if (Array.isArray(result.registrations)) {
+      allData = result.registrations;
+    } else {
+      allData = [];
+    }
+
+    updateStats();
+    renderTable();
+
+  } catch (error) {
+
+    console.error(error);
+
+    table.innerHTML = `
+      <tr>
+        <td colspan="8" class="error">
+          ❌ Failed to load data
+        </td>
+      </tr>
+    `;
+  }
+}
+
+
+/* =========================
+   HELPERS
+========================= */
+
+function escapeHtml(value) {
+
+  if (value === undefined || value === null) {
+    return "";
+  }
+
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+
+function formatDate(date) {
+
+  if (!date) {
+    return "-";
+  }
+
+  const d = new Date(date);
+
+  if (isNaN(d.getTime())) {
+    return "-";
+  }
+
+  return d.toLocaleDateString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric"
+  });
+}
+
+
+function getType(item) {
+
+  if (
+    item.type === "team" ||
+    item.registrationType === "team" ||
+    item.teamName
+  ) {
+    return "team";
+  }
+
+  if (
+    item.type === "individual" ||
+    item.registrationType === "individual"
+  ) {
+    return "individual";
+  }
+
+  if (
+    item.type === "sponsor" ||
+    item.registrationType === "sponsor" ||
+    item.companyName ||
+    item.sponsorshipType
+  ) {
+    return "sponsor";
+  }
+
+  if (
+    item.type === "free" ||
+    item.registrationType === "free"
+  ) {
+    return "free";
+  }
+
+  return "individual";
+}
+
+
+function getName(item) {
+
+  const type = getType(item);
+
+  if (type === "team") {
+    return item.teamName || item.name || "Team";
+  }
+
+  if (type === "sponsor") {
+    return item.companyName || item.name || "Sponsor";
+  }
+
+  return item.name || "Unknown";
+}
+
+
+function getPhone(item) {
+
+  return (
+    item.phone ||
+    item.mobile ||
+    item.mobileNumber ||
+    item.contactNumber ||
+    "-"
+  );
+}
+
+
+function getEmail(item) {
+
+  return item.email || "-";
+}
+
+
+function getEventOrType(item) {
+
+  const type = getType(item);
+
+  if (type === "team") {
+    return "Team Registration";
+  }
+
+  if (type === "individual") {
+    return "Individual Registration";
+  }
+
+  if (type === "free") {
+    return "Free Registration";
+  }
+
+  if (type === "sponsor") {
+    return "Sponsor";
+  }
+
+  return type;
+}
+
+
+/* =========================
+   IMPORTANT AMOUNT FUNCTION
+========================= */
+
+function getAmountText(item) {
+
+  const type = getType(item);
+
+  /*
+    Individual registration is ALWAYS ₹500
+    even if old database record contains ₹200.
+  */
+
+  if (type === "individual") {
+    return "₹500";
+  }
+
+  const amount = Number(item.amount || 0);
+
+  return "₹" + amount.toLocaleString("en-IN");
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+function getStatus(item) {
+
+  const type = getType(item);
+
+  if (type === "free") {
+    return "free";
+  }
+
+  if (type === "sponsor") {
+    return String(item.status || "new").toLowerCase();
+  }
+
+  return String(item.paymentStatus || "pending").toLowerCase();
+}
+
+
+function statusText(status) {
+
+  if (status === "paid") {
+    return "✅ Paid";
+  }
+
+  if (status === "failed") {
+    return "❌ Failed";
+  }
+
+  if (status === "pending") {
+    return "⏳ Pending";
+  }
+
+  if (status === "free") {
+    return "🆓 Free";
+  }
+
+  if (status === "contacted") {
+    return "📞 Contacted";
+  }
+
+  if (status === "closed") {
+    return "✅ Closed";
+  }
+
+  return status;
+}
+
+
+/* =========================
+   UPDATE STATS
+========================= */
+
+function updateStats() {
+
+  const total = allData.length;
+
+  let paid = 0;
+  let pending = 0;
+  let paidAmount = 0;
+
+  allData.forEach(item => {
+
+    const type = getType(item);
+    const status = getStatus(item);
+
+    if (status === "paid") {
+
+      paid++;
+
+      /*
+        Use ₹500 for individual payments.
+        Team amount still comes from database.
+      */
+
+      if (type === "individual") {
+        paidAmount += 500;
+      } else {
+        paidAmount += Number(item.amount || 0);
+      }
+    }
+
+    if (status === "pending") {
+      pending++;
+    }
+
+  });
+
+
+  document.getElementById("totalCount").textContent = total;
+
+  document.getElementById("paidCount").textContent = paid;
+
+  document.getElementById("pendingCount").textContent = pending;
+
+  document.getElementById("paidAmount").textContent =
+    "₹" + paidAmount.toLocaleString("en-IN");
+}
+
+
+/* =========================
+   RENDER TABLE
+========================= */
+
+function renderTable() {
+
+  const table = document.getElementById("dataTable");
+
+  const search =
+    document
+      .getElementById("searchInput")
+      .value
+      .toLowerCase()
+      .trim();
+
+
+  let data = [...allData];
+
+
+  /* FILTER */
+
+  if (currentFilter !== "all") {
+
+    data = data.filter(item => {
+
+      const type = getType(item);
+      const status = getStatus(item);
+
+      return (
+        type === currentFilter ||
+        status === currentFilter
+      );
+
+    });
+
+  }
+
+
+  /* SEARCH */
+
+  if (search) {
+
+    data = data.filter(item => {
+
+      const text = [
+        getName(item),
+        getPhone(item),
+        getEmail(item),
+        item.teamName,
+        item.captainName,
+        item.location,
+        item.profession
+      ]
+        .filter(Boolean)
+        .join(" ")
+        .toLowerCase();
+
+      return text.includes(search);
+
+    });
+
+  }
+
+
+  if (!data.length) {
+
+    table.innerHTML = `
+      <tr>
+        <td colspan="8" class="loading">
+          No records found
+        </td>
+      </tr>
+    `;
+
+    return;
+  }
+
+
+  table.innerHTML = data.map((item, index) => {
+
+    const type = getType(item);
+    const status = getStatus(item);
+
+    return `
+      <tr>
+
+        <td>
+          <strong>
+            ${escapeHtml(getName(item))}
+          </strong>
+        </td>
+
+        <td>
+          <span class="type-badge">
+            ${escapeHtml(getEventOrType(item))}
+          </span>
+        </td>
+
+        <td>
+          ${escapeHtml(getPhone(item))}
+        </td>
+
+        <td>
+          ${escapeHtml(getEmail(item))}
+        </td>
+
+        <td class="amount">
+          ${getAmountText(item)}
+        </td>
+
+        <td>
+          <span class="status ${escapeHtml(status)}">
+            ${statusText(status)}
+          </span>
+        </td>
+
+        <td>
+          ${formatDate(
+            item.createdAt ||
+            item.date ||
+            item.registrationDate
+          )}
+        </td>
+
+        <td>
+          <button
+            class="view-btn"
+            onclick="showDetails(${allData.indexOf(item)})"
+          >
+            View
+          </button>
+        </td>
+
+      </tr>
+    `;
+
+  }).join("");
+}
+
+
+/* =========================
+   FILTER
+========================= */
+
+function changeFilter(filter, button) {
+
+  currentFilter = filter;
+
+  document
+    .querySelectorAll(".filter-btn")
+    .forEach(btn => btn.classList.remove("active"));
+
+  button.classList.add("active");
+
+  renderTable();
+}
+
+
+function setFilter(filter, button) {
+
+  currentFilter = filter;
+
+  document
+    .querySelectorAll(".nav-btn")
+    .forEach(btn => btn.classList.remove("active"));
+
+  button.classList.add("active");
+
+  renderTable();
+}
+
+
+/* =========================
+   SHOW DETAILS
+========================= */
+
+function showDetails(index) {
+
+  const item = allData[index];
+
+  if (!item) {
+    return;
+  }
+
+  const type = getType(item);
+
+  const modal = document.getElementById("detailsModal");
+
+  const content = document.getElementById("modalContent");
+
+
+  let html = "";
+
+
+  /* =========================
+     FREE
+  ========================= */
+
+  if (type === "free") {
+
+    html = `
+
+      <div class="details-grid">
+
+        ${detail("Name", item.name)}
+
+        ${detail("Mobile", getPhone(item))}
+
+        ${detail("Email", item.email)}
+
+        ${detail("Age", item.age)}
+
+        ${detail("Experience", item.experience)}
+
+        ${detail("Profession", item.profession)}
+
+        ${detail(
+          "Registration Date",
+          formatDate(item.createdAt || item.date)
+        )}
+
+      </div>
+
+    `;
+
+  }
+
+
+  /* =========================
+     SPONSOR
+  ========================= */
+
+  else if (type === "sponsor") {
+
+    html = `
+
+      <div class="details-grid">
+
+        ${detail("Company", item.companyName)}
+
+        ${detail("Contact Person", item.name || item.contactName)}
+
+        ${detail("Mobile", getPhone(item))}
+
+        ${detail("Alternate Phone", item.alternatePhone)}
+
+        ${detail("Email", item.email)}
+
+        ${detail("Address", item.address)}
+
+        ${detail(
+          "Sponsorship Type",
+          item.sponsorshipType
+        )}
+
+        ${detail(
+          "Package",
+          item.package || item.packageName
+        )}
+
+        ${detail(
+          "Status",
+          item.status || "New"
+        )}
+
+        ${detail(
+          "Date",
+          formatDate(item.createdAt || item.date)
+        )}
+
+      </div>
+
+      ${
+        item.message
+          ? `
+            <h3 class="section-title">
+              Message
+            </h3>
+
+            <div class="detail">
+              ${escapeHtml(item.message)}
+            </div>
+          `
+          : ""
+      }
+
+    `;
+
+  }
+
+
+  /* =========================
+     TEAM
+  ========================= */
+
+  else if (type === "team") {
+
+    const players =
+      item.players ||
+      item.teamMembers ||
+      [];
+
+
+    html = `
+
+      <div class="details-grid">
+
+        ${detail("Team Name", item.teamName)}
+
+        ${detail("Location", item.location)}
+
+        ${detail("Captain", item.captainName)}
+
+        ${detail("Captain Mobile", item.captainPhone)}
+
+        ${detail("Captain Email", item.captainEmail)}
+
+        ${detail(
+          "Amount",
+          getAmountText(item)
+        )}
+
+        ${detail(
+          "Payment Status",
+          statusText(getStatus(item))
+        )}
+
+        ${detail(
+          "Registration Date",
+          formatDate(item.createdAt || item.date)
+        )}
+
+      </div>
+
+    `;
+
+
+    if (players.length) {
+
+      html += `
+        <h3 class="section-title">
+          Team Players (${players.length})
+        </h3>
+      `;
+
+
+      players.forEach((player, i) => {
+
+        html += `
+
+          <div class="player-card">
+
+            <h4>
+              Player ${i + 1} —
+              ${escapeHtml(
+                player.name || "Player"
+              )}
+            </h4>
+
+            <div class="player-info">
+
+              <div>
+                Mobile:
+                ${escapeHtml(
+                  player.phone ||
+                  player.mobile ||
+                  "-"
+                )}
+              </div>
+
+              <div>
+                Age:
+                ${escapeHtml(
+                  player.age || "-"
+                )}
+              </div>
+
+              <div>
+                Experience:
+                ${escapeHtml(
+                  player.experience || "-"
+                )}
+              </div>
+
+              <div>
+                Food:
+                ${escapeHtml(
+                  player.food ||
+                  player.foodPreference ||
+                  "-"
+                )}
+              </div>
+
+            </div>
+
+          </div>
+
+        `;
+
+      });
+
+    }
+
+  }
+
+
+  /* =========================
+     INDIVIDUAL
+  ========================= */
+
+  else {
+
+    html = `
+
+      <div class="details-grid">
+
+        ${detail(
+          "Registration Type",
+          "Individual"
+        )}
+
+        ${detail("Name", item.name)}
+
+        ${detail(
+          "Mobile",
+          getPhone(item)
+        )}
+
+        ${detail("Email", item.email)}
+
+        ${detail(
+          "Alternate Phone",
+          item.alternatePhone
+        )}
+
+        ${detail("Age", item.age)}
+
+        ${detail("Location", item.location)}
+
+        ${detail(
+          "Profession",
+          item.profession
+        )}
+
+        ${detail(
+          "Experience",
+          item.experience
+        )}
+
+        ${detail(
+          "Captain",
+          item.captain
+        )}
+
+        ${detail(
+          "Event",
+          item.event || item.eventName
+        )}
+
+        ${detail(
+          "Amount",
+          "₹500"
+        )}
+
+        ${detail(
+          "Payment Status",
+          statusText(getStatus(item))
+        )}
+
+        ${detail(
+          "Date",
+          formatDate(
+            item.createdAt ||
+            item.date ||
+            item.registrationDate
+          )
+        )}
+
+      </div>
+
+    `;
+
+  }
+
+
+  content.innerHTML = html;
+
+  modal.classList.add("show");
+}
+
+
+/* =========================
+   DETAIL HELPER
+========================= */
+
+function detail(label, value) {
+
+  if (
+    value === undefined ||
+    value === null ||
+    value === ""
+  ) {
+    value = "-";
+  }
+
+  return `
+
+    <div class="detail">
+
+      <label>
+        ${escapeHtml(label)}
+      </label>
+
+      <span>
+        ${escapeHtml(value)}
+      </span>
+
+    </div>
+
+  `;
+}
+
+
+/* =========================
+   CLOSE MODAL
+========================= */
+
+function closeModal() {
+
+  document
+    .getElementById("detailsModal")
+    .classList.remove("show");
+}
+
+
+document
+  .getElementById("detailsModal")
+  .addEventListener("click", function(e) {
+
+    if (e.target === this) {
+      closeModal();
+    }
+
+  });
+
+
+/* =========================
+   START
+========================= */
+
+loadData();
+
+</script>
+
+</body>
+</html>

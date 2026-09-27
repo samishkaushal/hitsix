@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>HITSIX Registration Details</title>
+
+  <link rel="stylesheet" href="style2.css">
+
+  <style>
+    .details-page {
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 20px;
+    }
+
+    .details-card {
+      background: #111;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+
+    .details-card h1 {
+      margin-bottom: 10px;
+    }
+
+    .details-card h1 span {
+      color: #f2b705;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .detail-label {
+      font-weight: 600;
+    }
+
+    .detail-value {
+      text-align: right;
+      word-break: break-word;
+    }
+
+    .payment-btn {
+      width: 100%;
+      margin-top: 25px;
+    }
+
+    .back-btn {
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .pending {
+      margin: 20px 0;
+      padding: 12px;
+      border-radius: 8px;
+      text-align: center;
+      background: rgba(242,183,5,0.12);
+      color: #f2b705;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="details-page">
+
+    <div class="details-card">
+
+      <h1>HITSIX <span>Registration Details</span></h1>
+
+      <p>Please check your details before proceeding to payment.</p>
+
+      <div class="pending">
+        Payment Status: Pending
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Event</span>
+        <span class="detail-value" id="event"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Registration Type</span>
+        <span class="detail-value" id="registrationType"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Full Name</span>
+        <span class="detail-value" id="name"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Mobile Number</span>
+        <span class="detail-value" id="phone"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Alternate Number</span>
+        <span class="detail-value" id="alternatePhone"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Email</span>
+        <span class="detail-value" id="email"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Age</span>
+        <span class="detail-value" id="age"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Location</span>
+        <span class="detail-value" id="location"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Profession</span>
+        <span class="detail-value" id="profession"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Food Preference</span>
+        <span class="detail-value" id="foodPreference"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Experience</span>
+        <span class="detail-value" id="experience"></span>
+      </div>
+
+      <div class="detail-row">
+        <span class="detail-label">Captain Application</span>
+        <span class="detail-value" id="captain"></span>
+      </div>
+
+      <button
+        id="paymentBtn"
+        class="btn btn-gold payment-btn"
+      >
+        Proceed to Payment ₹500
+      </button>
+
+      <button
+        class="btn btn-ghost back-btn"
+        onclick="history.back()"
+      >
+        ← Back to Form
+      </button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    const registrationData =
+      JSON.parse(
+        localStorage.getItem("hitsixRegistration")
+      );
+
+    if (!registrationData) {
+
+      alert("Registration details not found.");
+
+      window.location.href = "index.html";
+
+    } else {
+
+      document.getElementById("event").textContent =
+        registrationData.event || "Battle of Battles";
+
+      document.getElementById("registrationType").textContent =
+        registrationData.registrationType || "Individual";
+
+      document.getElementById("name").textContent =
+        registrationData.name || "";
+
+      document.getElementById("phone").textContent =
+        registrationData.phone || "";
+
+      document.getElementById("alternatePhone").textContent =
+        registrationData.alternatePhone || "Not provided";
+
+      document.getElementById("email").textContent =
+        registrationData.email || "";
+
+      document.getElementById("age").textContent =
+        registrationData.age || "";
+
+      document.getElementById("location").textContent =
+        registrationData.location || "";
+
+      document.getElementById("profession").textContent =
+        registrationData.profession || "Not provided";
+
+      document.getElementById("foodPreference").textContent =
+        registrationData.foodPreference || "";
+
+      document.getElementById("experience").textContent =
+        registrationData.experience || "";
+
+      document.getElementById("captain").textContent =
+        registrationData.captain || "Not selected";
+
+    }
+
+
+    // Razorpay Payment Link
+    document
+      .getElementById("paymentBtn")
+      .addEventListener("click", function () {
+
+        window.location.href =
+          "https://rzp.io/rzp/JKWbcGTn";
+
+      });
+
+  </script>
+
+</body>
+</html>
