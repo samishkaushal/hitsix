@@ -6,8 +6,8 @@
 // Team = EXACTLY 8 PLAYERS
 // Backend field = registrationData
 // ============================================================
-
 const API_BASE = "https://puneturfcricket.onrender.com";
+
 // const API_BASE = "http://localhost:5000";
 
 const INDIVIDUAL_PAYMENT_LINK = "https://rzp.io/rzp/JKWbcGTn";
